@@ -13,9 +13,12 @@ public class Main {
 
             reader.readFile();
             Parcer  parcer = new Parcer(reader);
-            for (String kek : reader.myFile){
-                System.out.println(kek);
-            }
+//            for (String kek : reader.myFile){
+//                System.out.println(kek);
+//            }
+            FlyingObjects   obj = new FlyingObjects();
+            obj.spliter(reader, 1);
+
         }
         catch (IOException ex){
             System.out.println("OOPS");
