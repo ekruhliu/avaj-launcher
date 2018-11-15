@@ -19,15 +19,19 @@ public class Helicopter extends Aircraft implements Flyable {
             case "SUN":
                 longitude += 10;
                 height += 2;
+                System.out.println("Helicopter#" + this._name + "(" + this._id + "): Найс, летим на пляж ебать шлюх!");
                 break;
             case "RAIN":
                 height += 5;
+                System.out.println("Helicopter#" + this._name + "(" + this._id + "): Доджичек это канэшна не приятно!");
                 break;
             case "FOG":
                 height += 1;
+                System.out.println("Helicopter#" + this._name + "(" + this._id + "): Нихуя не видно, как лететь вообще?!");
                 break;
             default: //SNOW
                 height -= 12;
+                System.out.println("Helicopter#" + this._name + "(" + this._id + "): Пизда, а откуда в Калифорнии снег?!");
                 break;
         }
         if (height > 100)

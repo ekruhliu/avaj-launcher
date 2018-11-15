@@ -19,15 +19,19 @@ public class JetPlane extends Aircraft implements Flyable {
             case "SUN":
                 longitude += 10;
                 height += 2;
+                System.out.println("JetPlane#" + this._name + "(" + this._id + "): 5 минут, полет нормальный!");
                 break;
             case "RAIN":
                 height += 5;
+                System.out.println("JetPlane#" + this._name + "(" + this._id + "): Миша включи дворники, заебал! В смысле у нас самолет без дворников!?");
                 break;
             case "FOG":
                 height += 1;
+                System.out.println("JetPlane#" + this._name + "(" + this._id + "): Народ, это у всех туман или мы в кабине так надули?!");
                 break;
             default: //SNOW
                 height -= 7;
+                System.out.println("JetPlane#" + this._name + "(" + this._id + "): Ну нахуй ваш снег, полетел я отсюда в теплые края!");
                 break;
         }
         if (height > 100)

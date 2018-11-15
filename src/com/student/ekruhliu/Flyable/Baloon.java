@@ -19,25 +19,25 @@ public class Baloon extends Aircraft implements Flyable {
             case "SUN":
                 longitude += 2;
                 height += 4;
-                System.out.println("Baloon#" + this._name + "(" + this._id + "): Let's enjoy the good weather and take some pics.");
+                System.out.println("Baloon#" + this._name + "(" + this._id + "): Супер, в такую погоду летать замечательно!");
                 break;
             case "RAIN":
                 height -= 5;
-                System.out.println("Baloon#" + this._name + "(" + this._id + "): Damn you rain! You messed up my baloon.");
+                System.out.println("Baloon#" + this._name + "(" + this._id + "): Бля, сейчас полную корзину воды нальет!");
                 break;
             case "FOG":
                 height -= 3;
-                System.out.println("Baloon#" + this._name + "(" + this._id + "): SMERT.");
+                System.out.println("Baloon#" + this._name + "(" + this._id + "): Туман очень густой, мы тут совершенно ничего не видим.");
                 break;
             default: //SNOW
                 height -= 15;
-                System.out.println("Baloon#" + this._name + "(" + this._id + "): It's snowing. We're gonna crash.");
+                System.out.println("Baloon#" + this._name + "(" + this._id + "): Нас засыпало снегом, нам СМЭРТЬ.");
                 break;
         }
         if (height > 100)
             height = 100;
         if (height <= 0){
-            System.out.println("Tower says: Baloon#" + this._name + "(" + this._id + ")" + " unregistered from the tower.");
+            System.out.println("\\u001B[31mError\\u001B[0m  Tower says: Baloon#" + this._name + "(" + this._id + ")" + " unregistered from the tower.");
             _weatherTower.unregister(this);
         }
         else {
