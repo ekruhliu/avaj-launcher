@@ -1,0 +1,23 @@
+package com.student.ekruhliu.Flyable;
+
+import com.student.ekruhliu.Flyable.Baloon;
+import com.student.ekruhliu.Flyable.Flyable;
+import com.student.ekruhliu.Flyable.Helicopter;
+import com.student.ekruhliu.Flyable.JetPlane;
+
+public class AircraftFactory {
+    public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height){
+        switch (type){
+            case "Baloon":
+                return new Baloon(name, new Coordinates(longitude, latitude, height));
+            case "Helicopter":
+                return new Helicopter(name, new Coordinates(longitude, latitude, height));
+            case "JetPlane":
+                return new JetPlane(name, new Coordinates(longitude, latitude, height));
+            default:
+                System.out.println("ERROR! Invalid flyable type!");
+                System.exit(1);
+                return null;
+        }
+    }
+}

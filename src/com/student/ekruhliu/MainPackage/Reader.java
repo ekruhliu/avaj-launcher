@@ -1,17 +1,17 @@
-package com.student.ekruhliu;
+package com.student.ekruhliu.MainPackage;
 
 import java.io.*;
 import java.util.ArrayList;
 
 public class Reader {
     protected    String fileName;
-    protected    int    iterations;
+    protected    int simulations;
     protected    ArrayList<String> myFile;
 
 
     Reader(String args){
         this.fileName = args;
-        this.iterations = 0;
+        this.simulations = 0;
         this.myFile = new ArrayList<String>();
     }
 
@@ -25,10 +25,8 @@ public class Reader {
                 myFile.add(line);
             }
         }
-        catch (IOException ex){
-            System.out.println("OOPS");
+        catch (Exception ex){
+            System.out.println("Error in file reading!");
         }
     }
-
-    Reader() {}
 }
