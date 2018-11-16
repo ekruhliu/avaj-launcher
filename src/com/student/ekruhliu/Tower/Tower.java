@@ -21,7 +21,4 @@ public class Tower {
             }
         }
     }
-    public boolean checkFlyable() {
-        return observers.isEmpty();
-    }
 }

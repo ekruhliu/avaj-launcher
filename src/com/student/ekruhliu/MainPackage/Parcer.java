@@ -53,11 +53,13 @@ public class Parcer {
         return AircraftFactory.newAircraft(splited.get(0), splited.get(1), Integer.valueOf(splited.get(2)), Integer.valueOf(splited.get(3)), Integer.valueOf(splited.get(4)));
     }
 
-    public void towerSay(String str, int i) {
+    public String towerSay(String str, int i) {
         ArrayList<String> splited = new ArrayList<String>();
+        String            toWrite;
         for (String retval : str.split("\\s+")) {
             splited.add(retval);
         }
-        System.out.println("Tower says: " + splited.get(0) + "#" + splited.get(1) + "(" + i + ")" + " registered to weather tower.");
+        toWrite = "Tower says: " + splited.get(0) + "#" + splited.get(1) + "(" + i + ")" + " registered to weather tower.";
+        return toWrite;
     }
 }

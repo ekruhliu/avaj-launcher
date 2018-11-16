@@ -5,41 +5,46 @@ import com.student.ekruhliu.Tower.Tower;
 import com.student.ekruhliu.Tower.WeatherTower;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.*;
 
 public class Main {
+
+    public static ArrayList<String> toFile = new ArrayList<>();
 
     public static void main(String[] args) {
 
         ArrayList<Flyable> fl = new ArrayList<>();
         Flyable            buff;
-        int                numOfSimulations = 0;
         int                numOfShips = 1;
-        boolean            checkFlyable = true;
-        WeatherTower    weatherTower = new WeatherTower();
+        WeatherTower       weatherTower = new WeatherTower();
 
-        try(Scanner scan = new Scanner(new File(args[0])))
-        {
-            Reader          reader = new Reader(args[0]);
-            Tower           tower = new Tower();
+        try {
+            Reader reader = new Reader(args[0]);
 
             reader.readFile();
             Parcer parcer = new Parcer(reader);
-            for (String toSplit : reader.myFile){
+            for (String toSplit : reader.myFile) {
                 buff = parcer.spliter(toSplit);
                 fl.add(buff);
                 buff.registerTower(weatherTower);
                 weatherTower.register(buff);
-                parcer.towerSay(toSplit, numOfShips);
+                toFile.add(parcer.towerSay(toSplit, numOfShips));
                 numOfShips++;
             }
-            numOfSimulations = reader.simulations;
-            checkFlyable = weatherTower.checkFlyable();
-            while(numOfSimulations > 0 && !checkFlyable){
+            while (reader.simulations > 0) {
                 weatherTower.changeWeather();
-//              checkFlyable = tower.checkFlyable();
-                numOfSimulations--;
+                reader.simulations--;
+            }
+            try(FileWriter writer = new FileWriter("simulation.txt", false)){
+                for (String toWrite : toFile){
+                    writer.write(toWrite);
+                    writer.append('\n');
+                }
+                writer.flush();
+                writer.close();
+            }
+            catch (Exception ex){
+                System.out.println("ERROR! Can`t write in file!");
             }
         }
         catch (Exception ex){

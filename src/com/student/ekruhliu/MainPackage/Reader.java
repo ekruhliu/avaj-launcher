@@ -1,12 +1,15 @@
 package com.student.ekruhliu.MainPackage;
 
+import com.student.ekruhliu.CustomException.FileReadException;
+
 import java.io.*;
 import java.util.ArrayList;
 
-public class Reader {
+public class Reader{
     protected    String fileName;
     protected    int simulations;
     protected    ArrayList<String> myFile;
+    private      BufferedReader buffer;
 
 
     Reader(String args){
@@ -15,11 +18,11 @@ public class Reader {
         this.myFile = new ArrayList<String>();
     }
 
-    void readFile(){
+    void readFile() throws IOException {
         try {
             String            line;
             FileInputStream   fstream = new FileInputStream(this.fileName);
-            BufferedReader    buffer = new BufferedReader(new InputStreamReader(fstream));
+            this.buffer = new BufferedReader(new InputStreamReader(fstream));
 
             while((line = buffer.readLine()) != null) {
                 myFile.add(line);
@@ -27,6 +30,10 @@ public class Reader {
         }
         catch (Exception ex){
             System.out.println("Error in file reading!");
+            System.exit(1);
+        }
+        finally {
+            this.buffer.close();
         }
     }
 }
